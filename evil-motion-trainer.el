@@ -59,21 +59,21 @@
 (defvar emt--commands nil)
 (defun emt--commands-with-shortcuts (cmds)
   (cl-remove-if (lambda (cmd)
-               (and
-                (>= (length (substitute-command-keys (format "\\[%S]" cmd))) 3)
-                (string-equal
-                 (substring (substitute-command-keys (format "\\[%S]" cmd)) 0 3)
-                 "M-x"))) cmds))
+                  (and
+                   (>= (length (substitute-command-keys (format "\\[%S]" cmd))) 3)
+                   (string-equal
+                    (substring (substitute-command-keys (format "\\[%S]" cmd)) 0 3)
+                    "M-x"))) cmds))
 
 (defun emt--maybe-block (orig-fn &rest args)
   (let ((cmd this-command))
     (when (and evil-motion-trainer-mode
-                (emt--check-enough-time-passed (float-time)))
+               (emt--check-enough-time-passed (float-time)))
       (if (and (memq this-command emt--commands)
                (or (eq this-command last-command)
                    (eq (get cmd 'alternative-cmd) last-command)))
           (progn
-            (incf evil-motion-trainer--current-count)
+            (cl-incf evil-motion-trainer--current-count)
             (when (> evil-motion-trainer--current-count evil-motion-trainer-threshold)
               (let* ((alts (emt--commands-with-shortcuts (get cmd 'emt--alts)))
                      (alt (nth (random (length alts)) alts))
@@ -116,9 +116,9 @@
   (let ((old-alts (or (get cmd 'emt--alts)
                       ())))
     (put cmd 'emt--alts (append
-                        (remove-if (lambda (cmd)
-                                     (memq cmd old-alts)) alternatives)
-                        old-alts))))
+                         (remove-if (lambda (cmd)
+                                      (memq cmd old-alts)) alternatives)
+                         old-alts))))
 
 (provide 'evil-motion-trainer)
 ;;; evil-motion-trainer.el ends here
