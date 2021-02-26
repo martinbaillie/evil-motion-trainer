@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2020 Martin Baillie
 
-;; Author: Martin Baillie <martin@baillie.email>
+;; Author: Martin Baillie <martin@baillie.id>
 ;; Keywords: learning
 ;; Version: 0.01
 ;; Package-Requires: ((cl-lib "0.5"))

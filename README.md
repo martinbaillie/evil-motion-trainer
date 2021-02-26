@@ -1,5 +1,7 @@
 # evil-motion-trainer
 
+![Evil Motion Trainer](evil_motion_trainer.gif "Evil Motion Trainer")
+
 ## About
 
 You've already opted to give your Emacs setup a streak of [modal
