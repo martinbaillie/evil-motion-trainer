@@ -95,7 +95,9 @@
      (advice-add (quote ,cmd) :around #'emt--maybe-block)))
 
 (add-emt-advice evil-next-line '(evil-search-forward evil-jumper/backward evil-snipe-s) next-line)
+(add-emt-advice evil-next-visual-line '(evil-search-forward evil-jumper/backward evil-snipe-s) next-line)
 (add-emt-advice evil-previous-line '(evil-search-backward evil-snipe-S evil-jumper/backward evil-find-char-backward) previous-line)
+(add-emt-advice evil-previous-visual-line '(evil-search-backward evil-snipe-S evil-jumper/backward evil-find-char-backward) previous-line)
 (add-emt-advice evil-forward-char '(evil-search-forward evil-find-char evil-snipe-f evil-snipe-s))
 (add-emt-advice evil-backward-char '(evil-search-backward evil-find-char-backward evil-snipe-F evil-snipe-S))
 
