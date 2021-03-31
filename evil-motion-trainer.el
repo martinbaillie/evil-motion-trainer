@@ -36,7 +36,7 @@
 
 (require 'cl-lib)
 
-(defgroup 'evil-motion-trainer nil  "Evil motion trainer" :group 'evil)
+(defgroup evil-motion-trainer nil  "Evil motion trainer" :group 'evil)
 
 (defvar evil-motion-trainer-mode nil
   "Trains you to use better evil motions.")
