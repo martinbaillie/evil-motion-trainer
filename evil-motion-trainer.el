@@ -89,11 +89,14 @@
               (let* ((alts (emt--commands-with-shortcuts (get cmd 'emt--alts)))
                      (alt (nth (random (length alts)) alts))
                      (key (substitute-command-keys (format "\\[%S]" alt)))
-                     (msg (format "Lazy motion! How about using %S (keymap: %s) instead?" alt key)))
+                     (msg (format "%s How about using %s (%s) instead?"
+                                  (propertize "Lazy motion!" 'face 'bold)
+                                  (propertize (format "%S" alt) 'face 'font-lock-type-face)
+                                  (propertize (format "%s" key) 'face 'font-lock-keyword-face))))
                 (if evil-motion-trainer-super-annoying-mode
                     (progn (switch-to-buffer (get-buffer-create "Evil motion trainer"))
                            (insert msg))
-                  (user-error msg)))))
+                  (message msg)))))
         (setq evil-motion-trainer--current-count 2)))
     (apply orig-fn args)))
 
