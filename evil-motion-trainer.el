@@ -98,7 +98,8 @@
                            (insert msg))
                   (message msg)))))
         (setq evil-motion-trainer--current-count 2)))
-    (apply orig-fn args)))
+    (when (< evil-motion-trainer--current-count evil-motion-trainer-threshold)
+      (apply orig-fn args))))
 
 (defmacro add-emt-advice (cmd alternatives &optional native-cmd)
   "Add advice around the provided CMD motion using ALTERNATIVES for suggestions.
